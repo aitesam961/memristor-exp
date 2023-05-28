@@ -1,0 +1,51 @@
+Implementation:
+-> A 3x3 Memristor Crossbar array.
+-> 3x Inputs (Assume analog sensor data)
+-> 3x Weights of Neural Network (Each coloumn has a weight.
+
+-> High resistance at the sink point
+
+
+How it works?
+
+1- Each input puts in some voltage between 0V-5V
+2- The weights set the threshold of Voltage divider (kind of..)
+3- The sensor voltage acts as source of the Voltage Divider.
+4- If Weight < Source:
+	i-	Current flows towards Weight source due to high resistance on the sink side AND lower Voltage level on the weight side.
+	ii-	Voltage drop occurs between that memristor and Sink resistance.
+5- If Source < weight:
+	i-	Current flows from Weight towards Source
+	ii-	This condition is not recommended as it may damage the sensor etc. A diode in forward BIAS can help block this flow. In that case, Higher Voltage will appear at that node. 
+	(Such system requires to be optimized for certain output. Multiple Op Amp comparators should be used after each output to get the perfect result.)
+	An Example Calculation:
+	W1 = 1.5V
+	W2 = 0.5V
+	W3 = 2.5V
+	
+	S1 = 5V
+	S2 = 5V
+	S3 = 5V
+	
+	O1 = 1.5V
+	O2 = 0.5V
+	O3 = 2.5V
+	
+	
+	S1 = 5V
+	S2 = 1.8V
+	S3 = 3.3V
+	
+	O1 = 1.5V
+	O2 = 0.5V
+	O3 = 2.5V
+	
+	
+	
+	
+
+
+=> The voltage level between a memristor and its sink resistance be used in application
+	e.g to activate CMOS or to trigger an OP-AMP comparator etc.
+
+
